@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	"github.com/hurtak/advent-of-code-2020/utils"
+	"github.com/stretchr/testify/assert"
 )
 
 type Fixtures struct {
@@ -12,26 +12,21 @@ type Fixtures struct {
 }
 
 func TestPart1(t *testing.T) {
-	fixtures := []Fixtures{
+	for _, fixture := range []Fixtures{
 		{
-			[]int{1721, 979, 366, 299, 675, 1456}, 5145790,
+			[]int{1721, 979, 366, 299, 675, 1456}, 514579,
 		},
-	}
-	for _, fixture := range fixtures {
-		utils.AssertEqual(t, Part1(fixture.Input), fixture.Expected)
+	} {
+		assert.Equal(t, Part1(fixture.Input), fixture.Expected)
 	}
 }
 
 func TestPart2(t *testing.T) {
-	fixtures := []Fixtures{
+	for _, fixture := range []Fixtures{
 		{
 			[]int{1721, 979, 366, 299, 675, 1456}, 241861950,
 		},
-	}
-	for _, fixture := range fixtures {
-		got := Part2(fixture.Input)
-		if got != fixture.Expected {
-			t.Errorf("Part2(%d) = %d; want %d", fixture.Input, got, fixture.Expected)
-		}
+	} {
+		assert.Equal(t, Part2(fixture.Input), fixture.Expected)
 	}
 }

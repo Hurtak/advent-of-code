@@ -12,10 +12,10 @@ func main() {
 const target = 2020
 
 func Part1(numbers []int) int {
-	for _, number1 := range numbers {
-		for _, number2 := range numbers {
-			if number1+number2 == target {
-				return number1 * number2
+	for _, n1 := range numbers {
+		for _, n2 := range numbers {
+			if n1+n2 == target {
+				return n1 * n2
 			}
 		}
 	}
@@ -24,11 +24,11 @@ func Part1(numbers []int) int {
 }
 
 func Part2(numbers []int) int {
-	for _, number1 := range numbers {
-		for _, number2 := range numbers {
-			for _, number3 := range numbers {
-				if number1+number2+number3 == target {
-					return number1 * number2 * number3
+	for _, n1 := range numbers {
+		for _, n2 := range numbers {
+			for _, n3 := range numbers {
+				if n1+n2+n3 == target {
+					return n1 * n2 * n3
 				}
 			}
 		}
