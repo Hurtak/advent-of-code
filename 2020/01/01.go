@@ -2,40 +2,23 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"strconv"
-	"strings"
+
+	"github.com/hurtak/advent-of-code-2020/utils"
 )
 
 func main() {
-	input, err := ioutil.ReadFile("01.txt")
-	if err != nil {
-		panic(err)
-	}
+	input := utils.ReadFileInt("01.txt")
 
-	list := strings.Fields(string(input))
-	var numbers []int
-	for _, element := range list {
-		number, err := strconv.Atoi(element)
-		if err != nil {
-			continue
-		}
-		numbers = append(numbers, number)
-	}
-
-	res1 := CalculateTwoEntry2020Sum(numbers)
-	fmt.Println(res1)
-	res2 := CalculateThreeEntry2020Sum(numbers)
-	fmt.Println(res2)
+	fmt.Println(CalculateTwoEntry2020Sum(input))
+	fmt.Println(CalculateThreeEntry2020Sum(input))
 }
 
+const target = 2020
+
 func CalculateTwoEntry2020Sum(numbers []int) int {
-	for i1, number1 := range numbers {
-		for i2, number2 := range numbers {
-			if i1 == i2 {
-				continue
-			}
-			if number1+number2 == 2020 {
+	for _, number1 := range numbers {
+		for _, number2 := range numbers {
+			if number1+number2 == target {
 				return number1 * number2
 			}
 		}
@@ -45,13 +28,10 @@ func CalculateTwoEntry2020Sum(numbers []int) int {
 }
 
 func CalculateThreeEntry2020Sum(numbers []int) int {
-	for i1, number1 := range numbers {
-		for i2, number2 := range numbers {
-			for i3, number3 := range numbers {
-				if i1 == i2 || i1 == i3 || i2 == i3 {
-					continue
-				}
-				if number1+number2+number3 == 2020 {
+	for _, number1 := range numbers {
+		for _, number2 := range numbers {
+			for _, number3 := range numbers {
+				if number1+number2+number3 == target {
 					return number1 * number2 * number3
 				}
 			}

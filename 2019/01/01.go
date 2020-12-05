@@ -2,26 +2,12 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"strconv"
-	"strings"
+
+	"github.com/hurtak/advent-of-code-2020/utils"
 )
 
 func main() {
-	input, err := ioutil.ReadFile("01.txt")
-	if err != nil {
-		panic(err)
-	}
-
-	var modules []int
-	for _, element := range strings.Fields(string(input)) {
-		number, err := strconv.Atoi(element)
-
-		if err != nil {
-			continue
-		}
-		modules = append(modules, number)
-	}
+	modules := utils.ReadFileInt("01.txt")
 
 	fuel := 0
 	for _, module := range modules {
