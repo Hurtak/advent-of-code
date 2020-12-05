@@ -2,6 +2,8 @@ package main
 
 import (
 	"testing"
+
+	"github.com/hurtak/advent-of-code-2020/utils"
 )
 
 type Fixtures struct {
@@ -9,30 +11,27 @@ type Fixtures struct {
 	Expected int
 }
 
-func TestCalculateTwoEntry2020Sum(t *testing.T) {
+func TestPart1(t *testing.T) {
 	fixtures := []Fixtures{
 		{
-			[]int{1721, 979, 366, 299, 675, 1456}, 514579,
+			[]int{1721, 979, 366, 299, 675, 1456}, 5145790,
 		},
 	}
 	for _, fixture := range fixtures {
-		got := CalculateTwoEntry2020Sum(fixture.Input)
-		if got != fixture.Expected {
-			t.Errorf("CalculateTwoEntry2020Sum(%d) = %d; want %d", fixture.Input, got, fixture.Expected)
-		}
+		utils.AssertEqual(t, Part1(fixture.Input), fixture.Expected)
 	}
 }
 
-func TestCalculateThreeEntry2020Sum(t *testing.T) {
+func TestPart2(t *testing.T) {
 	fixtures := []Fixtures{
 		{
 			[]int{1721, 979, 366, 299, 675, 1456}, 241861950,
 		},
 	}
 	for _, fixture := range fixtures {
-		got := CalculateThreeEntry2020Sum(fixture.Input)
+		got := Part2(fixture.Input)
 		if got != fixture.Expected {
-			t.Errorf("CalculateThreeEntry2020Sum(%d) = %d; want %d", fixture.Input, got, fixture.Expected)
+			t.Errorf("Part2(%d) = %d; want %d", fixture.Input, got, fixture.Expected)
 		}
 	}
 }

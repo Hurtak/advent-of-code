@@ -1,21 +1,17 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/hurtak/advent-of-code-2020/utils"
 )
 
 func main() {
 	input := utils.ReadFileInt("01.txt")
-
-	fmt.Println(CalculateTwoEntry2020Sum(input))
-	fmt.Println(CalculateThreeEntry2020Sum(input))
+	utils.PrintResult(Part1(input), Part2(input))
 }
 
 const target = 2020
 
-func CalculateTwoEntry2020Sum(numbers []int) int {
+func Part1(numbers []int) int {
 	for _, number1 := range numbers {
 		for _, number2 := range numbers {
 			if number1+number2 == target {
@@ -27,7 +23,7 @@ func CalculateTwoEntry2020Sum(numbers []int) int {
 	return -1
 }
 
-func CalculateThreeEntry2020Sum(numbers []int) int {
+func Part2(numbers []int) int {
 	for _, number1 := range numbers {
 		for _, number2 := range numbers {
 			for _, number3 := range numbers {
