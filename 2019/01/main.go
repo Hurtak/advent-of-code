@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	modules := utils.ReadFileInt("01.txt")
+	modules := utils.ReadFileInt("data.txt")
 
 	fuel := 0
 	for _, module := range modules {

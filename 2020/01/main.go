@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	input := utils.ReadFileInt("01.txt")
+	input := utils.ReadFileInt("data.txt")
 	utils.PrintResult(Part1(input), Part2(input))
 }
 
