@@ -29,27 +29,36 @@ func getValidPasswordsCount(funcion func(string) (bool, error), input []string) 
 	return validPasswords
 }
 
-func Part1(input string) (bool, error) {
+func getInputData(input string) (int, int, string, string, error) {
 	regexString := `^(\d+)-(\d+) (\w): (\w+)$`
 	r := regexp.MustCompile(regexString)
 
 	match := r.FindStringSubmatch(input)
 	if len(match) == 0 {
-		return false, fmt.Errorf("input %q did not match the format %q", input, regexString)
+		return 0, 0, "", "", fmt.Errorf("input %q did not match the format %q", input, regexString)
 	}
 
-	min, err := strconv.Atoi(match[1])
+	first, err := strconv.Atoi(match[1])
 	if err != nil {
-		return false, err
+		return 0, 0, "", "", err
 	}
 
-	max, err := strconv.Atoi(match[2])
+	second, err := strconv.Atoi(match[2])
 	if err != nil {
-		return false, err
+		return 0, 0, "", "", err
 	}
 
 	char := match[3]
 	password := match[4]
+
+	return first, second, char, password, nil
+}
+
+func Part1(input string) (bool, error) {
+	min, max, char, password, err := getInputData(input)
+	if err != nil {
+		return false, err
+	}
 
 	charsInPass := 0
 	for _, passwordChar := range password {
@@ -64,32 +73,16 @@ func Part1(input string) (bool, error) {
 }
 
 func Part2(input string) (bool, error) {
-	regexString := `^(\d+)-(\d+) (\w): (\w+)$`
-	r := regexp.MustCompile(regexString)
-
-	match := r.FindStringSubmatch(input)
-	if len(match) == 0 {
-		return false, fmt.Errorf("input %q did not match the format %q", input, regexString)
-	}
-
-	min, err := strconv.Atoi(match[1])
+	first, second, char, password, err := getInputData(input)
 	if err != nil {
 		return false, err
 	}
-
-	max, err := strconv.Atoi(match[2])
-	if err != nil {
-		return false, err
-	}
-
-	char := match[3]
-	password := match[4]
 
 	positionsMatched := 0
 	for i, passwordChar := range password {
 		if string(passwordChar) == char {
-			pos := i + 1
-			if pos == min || pos == max {
+			position := i + 1
+			if position == first || position == second {
 				positionsMatched++
 			}
 		}
