@@ -17,7 +17,7 @@ func TestPart1(t *testing.T) {
 			[]int{1721, 979, 366, 299, 675, 1456}, 514579,
 		},
 	} {
-		assert.Equal(t, Part1(fixture.Input), fixture.Expected)
+		assert.Equal(t, fixture.Expected, Part1(fixture.Input), fixture.Input)
 	}
 }
 
@@ -27,6 +27,6 @@ func TestPart2(t *testing.T) {
 			[]int{1721, 979, 366, 299, 675, 1456}, 241861950,
 		},
 	} {
-		assert.Equal(t, Part2(fixture.Input), fixture.Expected)
+		assert.Equal(t, fixture.Expected, Part2(fixture.Input), fixture.Input)
 	}
 }

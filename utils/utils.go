@@ -7,13 +7,20 @@ import (
 	"strings"
 )
 
-func ReadFileInt(path string) []int {
-	input, err := ioutil.ReadFile("01.txt")
+func ReadFileString(path string) []string {
+	input, err := ioutil.ReadFile(path)
 	if err != nil {
 		panic(err)
 	}
 
-	list := strings.Fields(string(input))
+	data := strings.TrimSpace(string(input))
+
+	return strings.Split(data, "\n")
+}
+
+func ReadFileInt(path string) []int {
+	list := ReadFileString(path)
+
 	var numbers []int
 	for _, element := range list {
 		number, err := strconv.Atoi(element)
