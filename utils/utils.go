@@ -7,13 +7,19 @@ import (
 	"strings"
 )
 
-func ReadFileString(path string) []string {
+func ReadFileStringWhole(path string) string {
 	input, err := ioutil.ReadFile(path)
 	if err != nil {
 		panic(err)
 	}
 
 	data := strings.TrimSpace(string(input))
+
+	return data
+}
+
+func ReadFileString(path string) []string {
+	data := ReadFileStringWhole(path)
 
 	return strings.Split(data, "\n")
 }
