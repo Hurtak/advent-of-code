@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/hurtak/advent-of-code-2020/utils"
+	"github.com/hurtak/advent-of-code/utils"
 )
 
 func main() {

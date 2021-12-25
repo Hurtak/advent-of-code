@@ -2,6 +2,8 @@ package main
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type Fixtures struct {
@@ -9,29 +11,25 @@ type Fixtures struct {
 	Expected int
 }
 
-func TestCalculateFuel(t *testing.T) {
+func TestPart1(t *testing.T) {
 	for _, fixture := range []Fixtures{
 		{12, 2},
 		{14, 2},
 		{1969, 654},
 		{100756, 33583},
 	} {
-		got := CalculateFuel(fixture.Input)
-		if got != fixture.Expected {
-			t.Errorf("CalculateFuel(%d) = %d; want %d", fixture.Input, got, fixture.Expected)
-		}
+		res := Part1(fixture.Input)
+		assert.Equal(t, fixture.Expected, res, fixture.Input)
 	}
 }
 
-func TestCalculateFuel2(t *testing.T) {
+func TestPart2(t *testing.T) {
 	for _, fixture := range []Fixtures{
 		{12, 2},
 		{1969, 966},
 		{100756, 50346},
 	} {
-		got := CalculateFuel2(fixture.Input)
-		if got != fixture.Expected {
-			t.Errorf("CalculateFuel2(%d) = %d; want %d", fixture.Input, got, fixture.Expected)
-		}
+		res := Part2(fixture.Input)
+		assert.Equal(t, fixture.Expected, res, fixture.Input)
 	}
 }
